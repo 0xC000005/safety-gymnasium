@@ -2,10 +2,10 @@ import safety_gymnasium
 from stable_baselines3 import PPO
 
 # Load the trained model
-model = PPO.load("ppo_safety_point_circle0.zip")
+model = PPO.load("SafetyPointButtonMO0-v0.zip")
 
 # Create the environment with rendering
-env = safety_gymnasium.make("SafetyPointCircle0-v0", render_mode="human")
+env = safety_gymnasium.make("SafetyPointButtonMO0-v0", render_mode="human")
 
 env = safety_gymnasium.wrappers.SafetyGymnasium2Gymnasium(env)
 
