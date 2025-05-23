@@ -2,12 +2,15 @@ import safety_gymnasium
 from stable_baselines3 import PPO
 
 # Load the trained model
-model = PPO.load("SafetyPointButtonMO0-v0.zip")
+model = PPO.load("SafetyPointButton2")
 
 # Create the environment with rendering
 env = safety_gymnasium.make("SafetyPointButtonMO0-v0", render_mode="human")
 
 env = safety_gymnasium.wrappers.SafetyGymnasium2Gymnasium(env)
+
+# Disable reward clipping for vector rewards to avoid constant warnings
+env.task.reward_conf.reward_clip = None
 
 
 obs, info = env.reset()

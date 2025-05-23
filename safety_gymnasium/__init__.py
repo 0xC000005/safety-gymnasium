@@ -138,6 +138,14 @@ __combine(button_mo_tasks, robots, max_episode_steps=1000)
 push_tasks = {'PushBase': {'task_name': 'PushBase'}, 'Push0': {}, 'Push1': {}, 'Push2': {}}
 __combine(push_tasks, robots, max_episode_steps=1000)
 
+push_mo_tasks = {
+    'PushMOBase': {'task_name': 'PushMOBase'},
+    'PushMO0': {},
+    'PushMO1': {},
+    'PushMO2': {},
+}
+__combine(push_mo_tasks, robots, max_episode_steps=1000)
+
 
 # Goal Environments
 # ----------------------------------------
