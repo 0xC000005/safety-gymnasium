@@ -27,6 +27,10 @@ from safety_gymnasium.tasks.safe_navigation.button.button_base import ButtonBase
 from safety_gymnasium.tasks.safe_navigation.button.button_level0 import ButtonLevel0
 from safety_gymnasium.tasks.safe_navigation.button.button_level1 import ButtonLevel1
 from safety_gymnasium.tasks.safe_navigation.button.button_level2 import ButtonLevel2
+from safety_gymnasium.tasks.safe_navigation.button.button_mo_base import ButtonMOBase
+from safety_gymnasium.tasks.safe_navigation.button.button_mo_level0 import ButtonMOLevel0
+from safety_gymnasium.tasks.safe_navigation.button.button_mo_level1 import ButtonMOLevel1
+from safety_gymnasium.tasks.safe_navigation.button.button_mo_level2 import ButtonMOLevel2
 from safety_gymnasium.tasks.safe_navigation.circle.circle_base import CircleBase
 from safety_gymnasium.tasks.safe_navigation.circle.circle_level0 import CircleLevel0
 from safety_gymnasium.tasks.safe_navigation.circle.circle_level1 import CircleLevel1

@@ -48,6 +48,29 @@ class Gymnasium2SafetyGymnasium(gymnasium.Wrapper):
         return obs, reward, cost, terminated, truncated, info
 
 
+class SafetyMOGymnasium2SafetyGymnasium(gymnasium.Wrapper):
+    """A wrapper that combines 'r_time' and 'r_success' from a reward dict or vector into a scalar reward, ignoring other components."""
+    def step(self, action):
+        result = self.env.step(action)
+        
+        # Handle both Safety-Gymnasium format (6 return values) and Gymnasium format (5 return values)
+        if len(result) == 6:
+            obs, vector_reward, cost, terminated, truncated, info = result
+        else:
+            obs, vector_reward, terminated, truncated, info = result
+            cost = info.get('cost', 0.0)
+        
+        # Convert vector reward to scalar
+        if isinstance(vector_reward, dict):
+            reward = float(vector_reward.get('r_time', 0.0)) + float(vector_reward.get('r_success', 0.0))
+        else:
+            # Assume vector_reward is a numpy array: [r_time, r_energy, r_success]
+            reward = float(vector_reward[0]) + float(vector_reward[2])
+        
+        # Return in Safety-Gymnasium format
+        return obs, reward, cost, terminated, truncated, info
+
+
 def make_gymnasium_environment(env_id, *args, **kwargs):
     """Make a Gymnasium environment."""
 

@@ -124,6 +124,14 @@ button_tasks = {
 }
 __combine(button_tasks, robots, max_episode_steps=1000)
 
+button_mo_tasks = {
+    'ButtonMOBase': {'task_name': 'ButtonMOBase'},
+    'ButtonMO0': {},
+    'ButtonMO1': {},
+    'ButtonMO2': {},
+}
+__combine(button_mo_tasks, robots, max_episode_steps=1000)
+
 
 # Push Environments
 # ----------------------------------------

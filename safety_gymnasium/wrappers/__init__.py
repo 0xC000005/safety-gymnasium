@@ -23,6 +23,7 @@ from safety_gymnasium.wrappers.env_checker import SafePassiveEnvChecker
 from safety_gymnasium.wrappers.gymnasium_conversion import (
     Gymnasium2SafetyGymnasium,
     SafetyGymnasium2Gymnasium,
+    SafetyMOGymnasium2SafetyGymnasium,
 )
 from safety_gymnasium.wrappers.normalize import (
     SafeNormalizeCost,
@@ -36,6 +37,8 @@ from safety_gymnasium.wrappers.unsqueeze import SafeUnsqueeze
 
 __all__ = [
     'Gymnasium2SafetyGymnasium',
+    'SafetyGymnasium2Gymnasium',
+    'SafetyMOGymnasium2SafetyGymnasium',
     'SafeAutoResetWrapper',
     'SafeNormalizeCost',
     'SafeNormalizeObservation',

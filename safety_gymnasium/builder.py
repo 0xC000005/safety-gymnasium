@@ -264,13 +264,22 @@ class Builder(gymnasium.Env, gymnasium.utils.EzPickle):
             )
             reward += self.task.reward_conf.reward_orientation_scale * zalign
 
-        # Clip reward
+        # Clip reward - handle both scalar and vector rewards
         reward_clip = self.task.reward_conf.reward_clip
         if reward_clip:
-            in_range = -reward_clip < reward < reward_clip
-            if not in_range:
-                reward = np.clip(reward, -reward_clip, reward_clip)
-                print('Warning: reward was outside of range!')
+            # Check if reward is a numpy array (vector) or scalar
+            if hasattr(reward, '__len__') and len(reward) > 1:
+                # Vector reward - clip each component
+                in_range = (-reward_clip < reward).all() and (reward < reward_clip).all()
+                if not in_range:
+                    reward = np.clip(reward, -reward_clip, reward_clip)
+                    print('Warning: vector reward was outside of range!')
+            else:
+                # Scalar reward - original logic
+                in_range = -reward_clip < reward < reward_clip
+                if not in_range:
+                    reward = np.clip(reward, -reward_clip, reward_clip)
+                    print('Warning: reward was outside of range!')
 
         return reward
 
