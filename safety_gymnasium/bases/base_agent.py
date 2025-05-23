@@ -530,6 +530,15 @@ class BaseAgent(abc.ABC):  # pylint: disable=too-many-instance-attributes
             np.ndarray: The velocity of the agent.
         """
         return get_body_xvelp(self.engine.model, self.engine.data, 'agent').copy()
+    
+    @property
+    def acc(self) -> np.ndarray:
+        """Get the acceleration of the agent in the simulator world reference frame.
+
+        Returns:
+            np.ndarray: The acceleration of the agent.
+        """
+        return self.engine.data.qacc.copy()
 
     @property
     def pos(self) -> np.ndarray:
